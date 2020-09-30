@@ -21,7 +21,7 @@ count = 0
 showMask = 0
 
 
-classes = 'NONE ONE TWO THREE FOUR FIVE'.split()
+classes = 'FIVE FOUR NONE ONE THREE TWO'.split()
 
 
 def initClass(name):
@@ -40,7 +40,7 @@ def binaryMask(img):
 
 def loadmodel():
     PATH = './models/model_test14_FINAL.pt'
-    # device = torch.device("cuda:0" if torch.cuda.is_available() else "cpu")
+    device = torch.device("cuda:0" if torch.cuda.is_available() else "cpu")
     # criterion = nn.CrossEntropyLoss()
     # model = CNN()
     # model.load_state_dict(torch.load(PATH, map_location=device))
@@ -93,7 +93,15 @@ def main():
             img = np.float32(roi)/255.
             img = np.expand_dims(img, axis=0)
             img = np.expand_dims(img, axis=-1)
-            pred = classes[np.argmax(model(torch.from_numpy(img))[0])]
+            # print(img.shape)
+            transpose_img = np.transpose(img, (0, 3, 2, 1))
+            # print(transpose_img.shape)
+            device = torch.device("cuda:0" if torch.cuda.is_available() else "cpu")
+            inp = torch.from_numpy(transpose_img)
+            out = model(inp)
+            _, prediction = torch.max(out, 1)
+            # print(prediction)
+            pred = classes[prediction]
             cv2.putText(window, 'Prediction: %s' % (pred), (fx,fy+2*fh), font, 1.0, (245,210,65), 2, 1)
             # use below for demoing purposes
             #cv2.putText(window, 'Prediction: %s' % (pred), (x0,y0-25), font, 1.0, (255,0,0), 2, 1)
