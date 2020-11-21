@@ -1,5 +1,6 @@
 # CNN-HowManyFingers-PyTorch
 
-Page under construction.
+## Demo page under construction.
 
-![Training Test 14](su/UML-Diagrams/version-2/PyVinci-UseCase-Diagram.png)
+##### Latest results so far after on training test #14
+![Training Test 14](support/training_test14.png)
