@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-''' Written by jared.vasquez@yale.edu '''
+""" Original author """
 
 import torch
 import torch.nn as nn
@@ -154,9 +154,8 @@ def main():
 class CNN(nn.Module):
     def __init__(self):
         super(CNN, self).__init__()
-        #input_channels = 1, output channels = 6, kernel_size=(3,3)
         self.conv1 = nn.Conv2d(1, 32, kernel_size=3)
-        self.pool1 = nn.MaxPool2d(2) # same as pool_size=(2,2)
+        self.pool1 = nn.MaxPool2d(2) 
         self.conv2 = nn.Conv2d(32, 64, kernel_size=3)
         self.pool2 = nn.MaxPool2d(2)
         self.conv3 = nn.Conv2d(64, 128, kernel_size=3)
@@ -164,18 +163,13 @@ class CNN(nn.Module):
         self.conv4 = nn.Conv2d(128, 128, kernel_size=3)
         self.pool4 = nn.MaxPool2d(2)
 
-        self.hidden= nn.Linear(128*16*16, 512) # The linear layer should therefore take 128*16*16=32768 input features
-        self.drop = nn.Dropout(0.3) # 30% probability of an element to be zeroed
+        self.hidden= nn.Linear(128*16*16, 512)
+        self.drop = nn.Dropout(0.3)
         self.out = nn.Linear(512, 6)
 
     def forward(self, x):
-        x = F.relu(self.conv1(x))  # -> [batch_size, 32, 298, 298] => The 32 is given by the number of kernels your conv layer is using.
-                                                                    # Since you are not using any padding and leave the stride and dilation as 1,
-                                                                    # a kernel size of 3 will crop 1 pixel in each spatial dimension.
-                                                                    # Therefore you’ll end up with 32 activation maps of spatial size 298x298.
-        # print(x.shape)
-        x = self.pool1(x) # -> [batch_size, 32, 149, 149] => The max pooling layer will halve the spatial size
-        # print(x.shape)
+        x = F.relu(self.conv1(x))
+        x = self.pool1(x)
         x = F.relu(self.conv2(x))
         x = self.pool2(x)
         x = F.relu(self.conv3(x))
@@ -183,12 +177,10 @@ class CNN(nn.Module):
         x = F.relu(self.conv4(x))
         x = self.pool4(x)
         x = x.flatten(start_dim=1)
-        #x = torch.flatten(x, start_dim=1) # Flattens a contiguous range of dims in a tensor
-        #x = x.view(x.size(0), -1) # -> [batch_size, 128*16*16=32768]
-        x = F.relu(self.hidden(x)) # -> [batch_size, 512]
-        x = self.drop(x) # -> [batch_size, 512]
+        x = F.relu(self.hidden(x)) 
+        x = self.drop(x)
         x = self.out(x)
-        x = F.softmax(x, dim=1) # -> [batch_size, 6]
+        x = F.softmax(x, dim=1)
         return x
 
 
