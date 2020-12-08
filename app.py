@@ -38,6 +38,7 @@ def binaryMask(img):
     ret, new = cv2.threshold(img, 25, 255, cv2.THRESH_BINARY_INV + cv2.THRESH_OTSU)
     return new
 
+
 def preProcessImage(roi):
     transform = transforms.Compose([
         transforms.ToPILImage(),
@@ -46,21 +47,18 @@ def preProcessImage(roi):
         transforms.ToTensor(),
         transforms.Normalize((0.5,),(0.5,))
     ])
-    # roi_tensor = torch.from_numpy(roi)
     img_t = transform(roi)
     batch_t = torch.unsqueeze(img_t, 0)
     return batch_t
-
+    
     
 def loadmodel():
     PATH = './models/model_test14_FINAL.pt'
     device = torch.device("cuda:0" if torch.cuda.is_available() else "cpu")
-    # criterion = nn.CrossEntropyLoss()
-    # model = CNN()
-    # model.load_state_dict(torch.load(PATH, map_location=device))
     model = torch.load(PATH)
     model.eval()
     return model
+
 
 def main():
     global font, size, fx, fy, fh
@@ -156,39 +154,6 @@ def main():
             x0 = min((x0 + 5, window.shape[1]-width))
 
     cam.release()
-
-
-class CNN(nn.Module):
-    def __init__(self):
-        super(CNN, self).__init__()
-        self.conv1 = nn.Conv2d(1, 32, kernel_size=3)
-        self.pool1 = nn.MaxPool2d(2) 
-        self.conv2 = nn.Conv2d(32, 64, kernel_size=3)
-        self.pool2 = nn.MaxPool2d(2)
-        self.conv3 = nn.Conv2d(64, 128, kernel_size=3)
-        self.pool3 = nn.MaxPool2d(2)
-        self.conv4 = nn.Conv2d(128, 128, kernel_size=3)
-        self.pool4 = nn.MaxPool2d(2)
-
-        self.hidden= nn.Linear(128*16*16, 512)
-        self.drop = nn.Dropout(0.3)
-        self.out = nn.Linear(512, 6)
-
-    def forward(self, x):
-        x = F.relu(self.conv1(x))
-        x = self.pool1(x)
-        x = F.relu(self.conv2(x))
-        x = self.pool2(x)
-        x = F.relu(self.conv3(x))
-        x = self.pool3(x)
-        x = F.relu(self.conv4(x))
-        x = self.pool4(x)
-        x = x.flatten(start_dim=1)
-        x = F.relu(self.hidden(x)) 
-        x = self.drop(x)
-        x = self.out(x)
-        x = F.softmax(x, dim=1)
-        return x
 
 
 if __name__ == '__main__':
