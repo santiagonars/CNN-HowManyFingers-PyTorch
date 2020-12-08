@@ -1,10 +1,10 @@
 #!/usr/bin/env python3
-""" Original author """
 
 import torch
 import torch.nn as nn
 import torch.nn.functional as F
 import torch.optim as optim
+from torchvision import transforms
 import matplotlib.pyplot as plt
 import numpy as np
 import copy
@@ -38,6 +38,20 @@ def binaryMask(img):
     ret, new = cv2.threshold(img, 25, 255, cv2.THRESH_BINARY_INV + cv2.THRESH_OTSU)
     return new
 
+def preProcessImage(roi):
+    transform = transforms.Compose([
+        transforms.ToPILImage(),
+        transforms.Resize(300),
+        transforms.Grayscale(),
+        transforms.ToTensor(),
+        transforms.Normalize((0.5,),(0.5,))
+    ])
+    # roi_tensor = torch.from_numpy(roi)
+    img_t = transform(roi)
+    batch_t = torch.unsqueeze(img_t, 0)
+    return batch_t
+
+    
 def loadmodel():
     PATH = './models/model_test14_FINAL.pt'
     device = torch.device("cuda:0" if torch.cuda.is_available() else "cpu")
@@ -87,22 +101,15 @@ def main():
 
         # take data or apply predictions on ROI
         if takingData:
-             cv2.imwrite('data/{0}/{0}_{1}.png'.format(className, count), roi)
-             count += 1
+            cv2.imwrite('data/{0}/{0}_{1}.png'.format(className, count), roi)
+            count += 1
         else:
-            img = np.float32(roi)/255.
-            img = np.expand_dims(img, axis=0)
-            img = np.expand_dims(img, axis=-1)
-            # print(img.shape)
-            transpose_img = np.transpose(img, (0, 3, 2, 1))
-            # print(transpose_img.shape)
-            device = torch.device("cuda:0" if torch.cuda.is_available() else "cpu")
-            inp = torch.from_numpy(transpose_img)
-            out = model(inp)
-            _, prediction = torch.max(out, 1)
-            # print(prediction)
-            pred = classes[prediction]
-            cv2.putText(window, 'Prediction: %s' % (pred), (fx,fy+2*fh), font, 1.0, (245,210,65), 2, 1)
+            img = preProcessImage(roi)
+            out = model(img)
+            # find prediction with the maximum score in output vector 'out'
+            _, pred = torch.max(out, 1) 
+            prediction = classes[pred[0]]
+            cv2.putText(window, 'Prediction: %s' % (prediction), (fx,fy+2*fh), font, 1.0, (245,210,65), 2, 1)
             # use below for demoing purposes
             #cv2.putText(window, 'Prediction: %s' % (pred), (x0,y0-25), font, 1.0, (255,0,0), 2, 1)
 
