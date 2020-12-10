@@ -3,7 +3,7 @@
 import torch
 import torch.nn as nn
 import torch.nn.functional as F
-import torch.optim as optim
+# import torch.optim as optim
 from torchvision import transforms
 import matplotlib.pyplot as plt
 import numpy as np
@@ -53,10 +53,23 @@ def preProcessImage(roi):
     
     
 def loadmodel():
-    PATH = './models/model_test14_FINAL.pt'
-    device = torch.device("cuda:0" if torch.cuda.is_available() else "cpu")
+    device = torch.device("cuda" if torch.cuda.is_available() else "cpu") # seems to work with this line
+    # Load state_dict: (Recommended)
+    PATH = './models/model_test14.pth'
+    model = CNN()
+    if device == torch.device('cpu'): # load on CPU
+        model.load_state_dict(torch.load(PATH, map_location=device)) # must deserialize the saved state_dict before passing
+    else: # load on GPU
+        model.load_state_dict(torch.load(PATH))
+        model.to(device)
+    model.eval() # set dropout and batch normalization layers to evaluation mode
+
+    # Load Entire Model:
+    # NOTE: was save the entire module using Python’s pickle module; Disadvantage: serialized data is bound to the specific classes
+    #                                                                and the exact directory structure used when the model is saved
+    """ PATH = './models/model_test14_entireModel.pt'
     model = torch.load(PATH)
-    model.eval()
+    model.eval() """
     return model
 
 
@@ -154,6 +167,39 @@ def main():
             x0 = min((x0 + 5, window.shape[1]-width))
 
     cam.release()
+
+
+class CNN(nn.Module):
+    def __init__(self):
+        super(CNN, self).__init__()
+        self.conv1 = nn.Conv2d(1, 32, kernel_size=3)
+        self.pool1 = nn.MaxPool2d(2) 
+        self.conv2 = nn.Conv2d(32, 64, kernel_size=3)
+        self.pool2 = nn.MaxPool2d(2)
+        self.conv3 = nn.Conv2d(64, 128, kernel_size=3)
+        self.pool3 = nn.MaxPool2d(2)
+        self.conv4 = nn.Conv2d(128, 128, kernel_size=3)
+        self.pool4 = nn.MaxPool2d(2)
+
+        self.hidden= nn.Linear(128*16*16, 512)
+        self.drop = nn.Dropout(0.3)
+        self.out = nn.Linear(512, 6)
+
+    def forward(self, x):
+        x = F.relu(self.conv1(x))
+        x = self.pool1(x)
+        x = F.relu(self.conv2(x))
+        x = self.pool2(x)
+        x = F.relu(self.conv3(x))
+        x = self.pool3(x)
+        x = F.relu(self.conv4(x))
+        x = self.pool4(x)
+        x = x.flatten(start_dim=1)
+        x = F.relu(self.hidden(x)) 
+        x = self.drop(x)
+        x = self.out(x)
+        x = F.softmax(x, dim=1)
+        return x
 
 
 if __name__ == '__main__':
