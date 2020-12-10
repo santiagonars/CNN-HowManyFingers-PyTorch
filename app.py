@@ -3,7 +3,6 @@
 import torch
 import torch.nn as nn
 import torch.nn.functional as F
-# import torch.optim as optim
 from torchvision import transforms
 import matplotlib.pyplot as plt
 import numpy as np
@@ -54,7 +53,6 @@ def preProcessImage(roi):
     
 def loadmodel():
     device = torch.device("cuda" if torch.cuda.is_available() else "cpu") # seems to work with this line
-    # Load state_dict: (Recommended)
     PATH = './models/model_test14.pth'
     model = CNN()
     if device == torch.device('cpu'): # load on CPU
@@ -63,13 +61,6 @@ def loadmodel():
         model.load_state_dict(torch.load(PATH))
         model.to(device)
     model.eval() # set dropout and batch normalization layers to evaluation mode
-
-    # Load Entire Model:
-    # NOTE: was save the entire module using Python’s pickle module; Disadvantage: serialized data is bound to the specific classes
-    #                                                                and the exact directory structure used when the model is saved
-    """ PATH = './models/model_test14_entireModel.pt'
-    model = torch.load(PATH)
-    model.eval() """
     return model
 
 
