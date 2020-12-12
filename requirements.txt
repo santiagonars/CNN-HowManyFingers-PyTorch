@@ -3,3 +3,4 @@ torch
 torchvision
 pytorch-model-summary>=0.1.2
 matplotlib
+seaborn
