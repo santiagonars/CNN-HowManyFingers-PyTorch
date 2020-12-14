@@ -99,8 +99,6 @@ The testing accurancy for every label showed that the model has a slight difficu
 
 ![bad_predictions](process_and_optimization/readme-support/bad_predictions.png)
 
-The confusion matrix shows very strong performance generally, however the model shows some difficulty in correctly counting four fingers. This misclassification seems most prevalent when the hand is angled and could likely be improved with additional data, augmentation and perhaps additional model complexity. For the purposes of this prototype, this caveat is deemed acceptable but could be improved in the future.
-
 A confusion matrix shows that the slight error in the model predicting four finger is most usually confused for three fingers. This issue seems most common when the four fingers are rotated to the side and coud be improved with more data or by making adjustments to the model. For the scope of this project this matter is deemed acceptable but could be improved in the future.
 
 ![confusion_matrix](process_and_optimization/readme-support/confusion_matrix.png)
