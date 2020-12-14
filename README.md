@@ -1,6 +1,8 @@
 # CNN-HowManyFingers-PyTorch
 A convolutional neural network (CNN) trained and implemented in PyTorch to predict the number of fingers being help up.
 
+See **requirements.py** for a complete list requirements.
+
 ## Key Contents
 * **app.py** - application to used to collect data and predict number of fingers 
 * **train_model.ipynb** - jupyter notebook used for training model
