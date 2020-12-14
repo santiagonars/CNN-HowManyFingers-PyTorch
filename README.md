@@ -93,7 +93,7 @@ A validation testing performance of greater than 99% accuracy was achieved. Ther
 
 ![normal testing within app](process_and_optimization/demo/ordered_2.gif)
 
-# Error analysis 
+# Error Analysis 
 Applying image augmentations to the testing set allowed a deeper understanding in model performance. It seems that applying these image transformations by torchvision decreased the accuracy by < 1%. This could likely due to a finger being covered by one of the augmentations. This issue should not be of concern as a human can make the same misclassification error if provided with partial information.
 
 The testing accurancy for every label showed that the model has a slight difficulty in classifying four fingers being held up. This was a signal of an issue to further investigate with a confusion matrix and by observing some of the bad predictions.
