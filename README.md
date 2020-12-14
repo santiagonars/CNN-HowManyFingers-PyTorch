@@ -109,7 +109,7 @@ A confusion matrix shows that the slight error in the model predicting four fing
 
 ![confusion_matrix](process_and_optimization/readme-support/confusion_matrix.png)
 
-Furthermore, with more testing of the model within the application, the predictions of the model are sensitive to any background objects, including shadows and too much lighting.
+Furthermore, with more testing of the model within the application, it can be observed that the predictions of the model are sensitive to any background objects, including shadows and too much lighting.
 This was expected as the original dataset for the baseline tensorflow protype had a similar issue. 
 To reemphasize, isolation of hands features can be improved with refined image processing to the lighting. 
 Also, the model could be improved by gathering more training data as well as augmentating with the images with busy backgrounds and various lighting.
