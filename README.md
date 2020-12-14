@@ -5,7 +5,7 @@ A convolutional neural network (CNN) trained and implemented in PyTorch to predi
 * **app.py** - application to used to collect data and predict number of fingers 
 * **train_model.ipynb** - jupyter notebook used for training model
 * **images.tgz** - compressed tarball of complete training and validation/testing data
-* **/models/model_Final.pth** - final trained pretrained model
+* **models/model_Final.pth** - final trained pretrained model
 * **process_and_optimization** - see draft training notebook with notes for each step,model optimization notes (training iterations and hyperparameters changes), and more.
 
 ## Demo
