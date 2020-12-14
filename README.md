@@ -10,6 +10,7 @@ A convolutional neural network (CNN) trained and implemented in PyTorch to predi
 
 ## Demo
 Demo of digit counting with and without binary mask visible. 
+
 ![normal](process_and_optimization/demo/ordered.gif)
 ![binary mask](process_and_optimization/demo/binarymask.gif)
 
@@ -104,9 +105,11 @@ To better understand model performance outside normal conditions, further testin
 
 ![corner case](process_and_optimization/demo/cornerCase.gif)
 
-A confusion matrix shows that the slight error in the model predicting four finger is most usually confused for three fingers. Further testing of the model within the application with the binary mask visible helped understand the probable cause. This issue seems most common when the four fingers are rotated to the side and coud be improved with more data or by making adjustments to the model. For the scope of this project this matter is deemed acceptable but could be improved in the future.
+The confusion matrix shows that the slight error in the model happens when attempting to classify four finger, and usually confused for three fingers.
 
 ![confusion_matrix](process_and_optimization/readme-support/confusion_matrix.png)
+
+Further testing of the model within the application with the binary mask visible helped understand the probable cause of the issue. It seems most common when the four fingers are rotated to the side. This could be improved with more data or by making adjustments to the model. For the scope of this project this matter is deemed acceptable but could be improved in the future.
 
 ![four finger error observation](process_and_optimization/demo/misclassification.gif)
 
