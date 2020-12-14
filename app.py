@@ -57,7 +57,7 @@ def preProcessImage(roi):
     
 def loadmodel():
     device = torch.device("cuda" if torch.cuda.is_available() else "cpu") # seems to work with this line
-    PATH = './models/model_test15.pth'
+    PATH = './models/model_Final.pth'
     model = CNN()
     if device == torch.device('cpu'): # load on CPU
         model.load_state_dict(torch.load(PATH, map_location=device)) # must deserialize the saved state_dict before passing
