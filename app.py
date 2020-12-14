@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 """ 
-Original author: Jared Vasquez --- jared.vasquez@yale.edu
-Modified by: Santiago Norena --- san.norena@gmail.com
+Original author: jared.vasquez@yale.edu
+Modified by: san.norena@gmail.com
 """
 
 import torch
