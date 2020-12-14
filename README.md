@@ -115,6 +115,7 @@ To reemphasize, isolation of hands features can be improved with refined image p
 Also, the model could be improved by gathering more training data as well as augmentating with the images with busy backgrounds and various lighting.
 
 # Acknowledgement
-This project was completely built in PyTorch and used as baseline an implemention that was done on keras + tensorflow 1.
-If you would like to see how this project is built in Tensorflow, check it out!
+This project was completely built in PyTorch and used as baseline an implemention that was done on Keras and TensorFlow 1.
+
+If you would like to see how this project is built in TensorFlow, check it out.
 https://github.com/jaredvasquez/CNN-HowManyFingers
