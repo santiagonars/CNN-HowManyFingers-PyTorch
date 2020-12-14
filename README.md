@@ -32,7 +32,6 @@ Grayscaled images were used for training to simplify the number of inputs and co
 
 The data was originally collected by holding up 0 to 5 fingers in the region of interest and storing the images. 
 The original dataset from the baseline project was used, for which each label contains about 1500 images plus an additional 600 images for validation.
-Please see baseline repo to learn more about this.
 
 ![training_images](process_and_optimization/readme-support/training_images.png)
 
