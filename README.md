@@ -21,14 +21,14 @@ The model performs best when provided a plain white background without many feat
 
 ### Keyboard Shortcuts
 * The prediction region on the screen can be moved in different directions by pressing: 
-**  `i` key (up)
-**  `l` key (down)
-**  `j` key (left)
-**  `k` key (right)
+-  `i` key (up)
+-  `l` key (down)
+-  `j` key (left)
+-  `k` key (right)
 * Display the binary mask being applied to the prediction region by toggling with the:
-**  `b` key
+-  `b` key
 * Quit the application by pressing:
-**  `q` key
+-  `q` key
 
 # Feature Input
 Grayscaled images were used for training to simplify the number of inputs and computations used by the CNN. These were originally collected by applying a binary mask to highlight the hands edges and then applying thresholding.
