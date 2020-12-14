@@ -115,8 +115,8 @@ Further testing of the model within the application with the binary mask visible
 
 Furthermore, with more testing of the model within the application, it can be observed that the predictions of the model are sensitive to any background objects, including shadows and too much lighting.
 This was expected as the original dataset for the baseline tensorflow protype had a similar issue. 
-To reemphasize, isolation of hands features can be improved with refined image processing to the lighting. 
-Also, the model could be improved by gathering more training data as well as augmentating with the images with busy backgrounds and various lighting.
+To re-emphasize, isolation of hands features can be improved with refined image processing to the lighting. 
+Also, the model could be improved by gathering more training data as well as augmentating the images with busy backgrounds and various lighting.
 
 # Acknowledgement
 This project was completely built in PyTorch and used as baseline an implemention that was done on Keras and TensorFlow 1.
