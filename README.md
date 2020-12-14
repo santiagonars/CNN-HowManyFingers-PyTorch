@@ -21,10 +21,7 @@ The model performs best when provided a plain white background without many feat
 
 ### Keyboard Shortcuts
 * The prediction region on the screen can be moved in different directions by pressing: 
-    >  `i` key (up)
-    >  `l` key (down)
-    >  `j` key (left)
-    >  `k` key (right)
+    >  `i` key (up) --- `l` key (down) --- `j` key (left) --- `k` key (right)
 * Display the binary mask being applied to the prediction region by toggling with the:
     >  `b` key
 * Quit the application by pressing:
