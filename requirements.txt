@@ -1,4 +1,4 @@
-numpy>=1.17
+numpy>=1.19
 torch>=1.4
 torchvision>=0.5
 pytorch-model-summary>=0.1.2
