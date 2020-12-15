@@ -2,12 +2,12 @@
 A convolutional neural network (CNN) trained and implemented in PyTorch to predict the number of fingers being help up.
 
 ## Key Contents
-* **app.py** - application to used to collect data and predict number of fingers 
+* **app.py** - application to collect data and predict number of fingers 
 * **train_model.ipynb** - jupyter notebook used for training model
 * **images.tgz** - compressed tarball of complete training and validation/testing data
-* **models/model_Final.pth** - final trained model (Can be used as a pretrained model for further exploration).
-* **process_and_optimization** - see draft training notebook with notes for each step,model optimization notes (training iterations and hyperparameters changes), and more.
-* **requirements.py** - complete list of requirement packages with versions used.
+* **models/model_Final.pth** - final trained model (Can be used as a pretrained model for further exploration)
+* **process_and_optimization** - see draft training notebook with notes for each step,model optimization notes (training iterations and hyperparameters changes), and more
+* **requirements.py** - complete list of packages used (with versions)
 
 ## Demo
 Demo of model predicting the number of fingers being held up in a hand.
