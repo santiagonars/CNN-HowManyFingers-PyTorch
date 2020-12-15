@@ -10,7 +10,7 @@ A convolutional neural network (CNN) trained and implemented in PyTorch to predi
 * **requirements.py** - complete list of requirement packages with versions used.
 
 ## Demo
-Demo of model predicting the number of fingers being held up in a hand, 
+Demo of model predicting the number of fingers being held up in a hand.
 
 > Without (left) and with (right) binary mask visible.
 
