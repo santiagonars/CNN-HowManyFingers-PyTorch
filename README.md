@@ -87,7 +87,7 @@ Training used a cross entropy loss function, and adadelta optimizer with a start
 ![GoogleCloud_VM](process_and_optimization/readme-support/GoogleCloud_VM.png)
 
 # Results and Performance
-A validation testing performance of greater than 99% accuracy was achieved. There seems to be an issue with loss as it is converging near 1. This was not a critical issue as model performance within the application is as working well as expected with the accuracy results, hence it is deemed acceptable for purposes of this prototype project, however further investigation might be helpful for the future.
+A validation testing performance of greater than 99% accuracy was achieved during training. There seems to be an issue with loss as it is converging near 1. This was not a critical issue as model performance within the application is as working well as expected with the accuracy results, hence it is deemed acceptable for purposes of this prototype project, however further investigation might be helpful for the future.
 
 ![training_Final](process_and_optimization/results/training_Final.png)
 
