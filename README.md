@@ -11,6 +11,7 @@ A convolutional neural network (CNN) trained and implemented in PyTorch to predi
 
 ## Demo
 Demo of model predicting the number of fingers being held up in a hand, 
+
 > with (right) and without (left) binary mask visible. 
 ![normal](process_and_optimization/demo/ordered.gif)
 ![binary mask](process_and_optimization/demo/binarymask.gif)
