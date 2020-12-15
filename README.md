@@ -7,7 +7,7 @@ A convolutional neural network (CNN) trained and implemented in PyTorch to predi
 * **images.tgz** - compressed tarball of complete training and validation/testing data
 * **models/model_Final.pth** - final trained pretrained model
 * **process_and_optimization** - see draft training notebook with notes for each step,model optimization notes (training iterations and hyperparameters changes), and more.
-* **requirements.py** - complete list of packages with versions used.
+* **requirements.py** - complete list of requirement packages with versions used.
 
 ## Demo
 Demo of digit counting with and without binary mask visible. 
@@ -106,7 +106,7 @@ To better understand model performance outside normal conditions, further testin
 
 ![corner case](process_and_optimization/demo/cornerCase.gif)
 
-The confusion matrix shows that the slight error in the model happens when attempting to classify four finger, and usually confused for three fingers.
+The confusion matrix shows that the slight error in the model happens when attempting to classify four fingers, and usually confused for three fingers.
 
 ![confusion_matrix](process_and_optimization/readme-support/confusion_matrix.png)
 
