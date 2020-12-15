@@ -93,7 +93,7 @@ A validation testing performance of greater than 99% accuracy was achieved durin
 
 ![training_Final](process_and_optimization/results/training_Final.png)
 
-> ![normal testing within app](process_and_optimization/demo/ordered_2.gif)
+![normal testing within app](process_and_optimization/demo/ordered_2.gif)
 
 # Error Analysis 
 Applying image augmentations to the testing set allowed a deeper understanding in model performance. It seems that applying these image transformations by torchvision decreased the accuracy by < 1%. This could likely due to a finger being covered by one of the augmentations. This issue should not be of concern as a human can make the same misclassification error if provided with partial information.
@@ -106,7 +106,7 @@ The testing accurancy for every label showed that the model has a slight difficu
 
 To better understand model performance outside normal conditions, further testing was done holding up fingers in uncommon positions (ex. only the index and picky). The model was able to classify better than expected in these corner cases, however additional data will might be useful to improve the performance of the model under these scenarios.
 
-> ![corner case](process_and_optimization/demo/cornerCase.gif)
+![corner case](process_and_optimization/demo/cornerCase.gif)
 
 The confusion matrix shows that the slight error in the model happens when attempting to classify four fingers, and usually confused for three fingers.
 
@@ -114,7 +114,7 @@ The confusion matrix shows that the slight error in the model happens when attem
 
 Further testing of the model within the application with the binary mask visible helped understand the probable cause of the issue. It seems most common when the four fingers are rotated to the side. This could be improved with more data or by making adjustments to the model. For the scope of this project this matter is deemed acceptable but could be improved in the future.
 
-> ![four finger error observation](process_and_optimization/demo/misclassification.gif)
+![four finger error observation](process_and_optimization/demo/misclassification.gif)
 
 Furthermore, with more testing of the model within the application, it can be observed that the predictions of the model are sensitive to any background objects, including shadows and too much lighting.
 This was expected as the original dataset for the baseline tensorflow protype had a similar issue. 
