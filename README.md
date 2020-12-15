@@ -83,7 +83,7 @@ To give variation to the training set, the input was augmented with shifts, rota
 
 Training used a cross entropy loss function, and adadelta optimizer with a starting learning rate set to 1. A learning scheduler was applied to decreased the learning rate by 0.1 every 15 epochs.
 
-The cost to have this VM up and running estimated to be about $0.266 hourly. 
+> The model was trained on the Google Cloud AI Platform. The cost to have this VM notebook running is estimated to be about $0.266/hour (around time of training). 
 ![GoogleCloud_VM](process_and_optimization/readme-support/GoogleCloud_VM.png)
 
 # Results and Performance
