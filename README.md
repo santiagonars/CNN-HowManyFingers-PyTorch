@@ -10,7 +10,7 @@ A convolutional neural network (CNN) trained and implemented in PyTorch to predi
 * **requirements.py** - complete list of requirement packages with versions used.
 
 ## Demo
-Demo of digit counting with and without binary mask visible. 
+Demo of model predicting on the number of fingers being held up in a hand, with (right) and without (left) binary mask visible. 
 
 ![normal](process_and_optimization/demo/ordered.gif)
 ![binary mask](process_and_optimization/demo/binarymask.gif)
